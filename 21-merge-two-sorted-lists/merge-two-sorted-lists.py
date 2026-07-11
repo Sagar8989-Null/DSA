@@ -12,26 +12,22 @@ class Solution(object):
         :rtype: Optional[ListNode]
         """
 
-        res = []
+        dummy = ListNode()
+        curr = dummy
+            
+        while list1 and list2:
+            if list1.val <= list2.val:
+                curr.next = list1
+                list1 = list1.next
+                
+            else:
+                curr.next = list2
+                list2 = list2.next
 
-        while list1:
-            res.append(list1.val)
-            list1 = list1.next
+            curr = curr.next 
 
-        while list2:
-            res.append(list2.val)
-            list2 = list2.next
+        curr.next = list1 if list1 else list2 
 
-        res.sort()
+        return dummy.next
+        
 
-        if not res:
-            return None
-
-        head = ListNode(res[0])
-        node = head
-
-        for i in range(1, len(res)):
-            node.next = ListNode(res[i])
-            node = node.next
-
-        return head
