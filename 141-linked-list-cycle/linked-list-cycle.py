@@ -11,13 +11,13 @@ class Solution(object):
         :rtype: bool
         """
 
-        visited = set()
-        curr = head
+        slow = fast = head
 
-        while curr:
-            if curr in visited:
-                return True
-            visited.add(curr)
-            curr = curr.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                return True 
 
         return False
