@@ -4,11 +4,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        a = min(nums)
+        b = max(nums)
 
-        Max = max(nums)
-        Min = min(nums)
+        while b:
+            a , b = b , a % b
 
-        for i in range(Min+1,0,-1):
-            if Min % i  == 0 and Max % i == 0:
-                return i
-            
+        return a
