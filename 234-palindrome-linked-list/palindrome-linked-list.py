@@ -10,13 +10,13 @@ class Solution(object):
         :rtype: bool
         """
         
-        val = []
+        S = []
 
         while head:
-            val.append(str(head.val))
+            S.append(str(head.val))
             head = head.next  
 
-        S = "".join(val)
+        S = "".join(S)
 
         return S == S[::-1]
     
