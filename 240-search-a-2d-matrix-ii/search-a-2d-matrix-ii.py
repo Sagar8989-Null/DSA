@@ -6,14 +6,12 @@ class Solution(object):
         :rtype: bool
         """
 
-        new = []
+        n = len(matrix)
+        m = len(matrix[0])
 
-        for i in matrix:
-            new.extend(i)
+        for i in range(n):
+            for j in range(m):
+                if matrix[i][j] == target:
+                    return True
 
-        new = set(new)
-
-        if target in new:
-            return True 
-        else:
-            return False
+        return False
