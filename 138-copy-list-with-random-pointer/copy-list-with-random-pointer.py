@@ -1,0 +1,27 @@
+# Definition for a Node.
+# class Node:
+#     def __init__(self, x, next=None, random=None):
+#         self.val = int(x)
+#         self.next = next
+#         self.random = random
+
+class Solution:
+    def copyRandomList(self, head):
+        mapping = {None: None}
+
+        curr = head
+
+        while curr:
+            mapping[curr] = Node(curr.val)
+            curr = curr.next
+
+       
+        curr = head
+
+        while curr:
+            mapping[curr].next = mapping[curr.next]
+            mapping[curr].random = mapping[curr.random]
+
+            curr = curr.next
+
+        return mapping[head]
