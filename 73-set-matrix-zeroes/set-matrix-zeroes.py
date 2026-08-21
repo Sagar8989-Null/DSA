@@ -4,24 +4,19 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        def setrowzero(i):
-            for j in range(m):
-                matrix[i][j] = 0
 
-        def setcolumnzero(j):
-            for i in range(n):
-                matrix[i][j] = 0
-
-        m = len(matrix[0])
+        row=set()
+        col=set()
         n = len(matrix)
-
-        hashmap = []
+        m = len(matrix[0])
 
         for i in range(n):
             for j in range(m):
-                if matrix[i][j] == 0:
-                    hashmap.append([i,j])
-                    
-        for index in hashmap: 
-                setrowzero(index[0])
-                setcolumnzero(index[1])
+                if matrix[i][j]==0:
+                    row.add(i)
+                    col.add(j)
+
+        for i in range(n):
+            for j in range(m):
+                if i in row or j in col:
+                    matrix[i][j]=0
