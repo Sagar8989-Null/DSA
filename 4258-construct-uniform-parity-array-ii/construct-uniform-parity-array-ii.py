@@ -1,13 +1,8 @@
 class Solution:
-    def uniformArray(self, nums1: list[int]) -> bool:
-        
-        Min = min(nums1)
+    def uniformArray(self, nums1):
+        mn = min(nums1)
 
-        if Min %2 == 1:
-            return True 
-        else:
-            for i in nums1:
-                if i % 2 == 1:
-                    return False
+        if mn % 2 == 1:
+            return True
 
-        return True 
+        return all(x % 2 == 0 for x in nums1)
