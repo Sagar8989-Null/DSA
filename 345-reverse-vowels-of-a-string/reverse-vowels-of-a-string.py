@@ -6,24 +6,26 @@ class Solution(object):
         """
         
         vowels = {'A','a','E','e','I','i','O','o','U','u'}
-        stack = []
         
-        res = []
+        res = list(s)
 
-        for i in s:
-            if i in vowels: 
-                stack.append(i)
-                res.append('_')
-            else:
-                res.append(i)
+        p1 = 0
+        p2 = len(s)-1
 
-        for i in range(len(res)):
-            if res[i] == '_':
-                res[i] = stack.pop()
+        while p1 < p2:
+            while p1 < p2 and res[p1] not in vowels:
+                p1 += 1
 
+            while p1 < p2 and res[p2] not in vowels:
+                p2 -= 1
+
+            res[p1], res[p2] = res[p2], res[p1]
+
+            p1 += 1
+            p2 -= 1
+
+            
         return ''.join(res)
-
-
             
 
         
